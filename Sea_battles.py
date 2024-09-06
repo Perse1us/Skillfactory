@@ -1,6 +1,5 @@
 import random
 
-
 class Dot:
     def __init__(self, x, y):
         self.x = x
@@ -71,22 +70,19 @@ class Board:
             if d in ship.dots:
                 ship.lives -= 1
                 if user_field:
-                    # Если выстрел был по игроку (ИИ стреляет)
-                    self.user_field[d.x][d.y] = "X"  # Попадание ИИ на доске игрока
+                    self.user_field[d.x][d.y] = "X" 
                 else:
-                    # Если выстрел был по ИИ (игрок стреляет)
-                    self.enemy_field[d.x][d.y] = "X"  # Попадание игрока на доске ИИ
+                    self.enemy_field[d.x][d.y] = "X"
                 if ship.lives == 0:
                     self.count_living -= 1
-                return True  # Возвращаем True при попадании
+                return True
 
-        # Если выстрел не попал в корабль (промах)
         if user_field:
-            self.user_field[d.x][d.y] = "T"  # Промах ИИ на доске игрока
+            self.user_field[d.x][d.y] = "T"
         else:
-            self.enemy_field[d.x][d.y] = "T"  # Промах игрока на доске ИИ
+            self.enemy_field[d.x][d.y] = "T"
 
-        return False  # Возвращаем False при промахе
+        return False
 
     def begin(self):
         self.busy = []
